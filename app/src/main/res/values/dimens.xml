@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin">50dp</dimen>
+    <dimen name="dimen">18sp</dimen>
+    <dimen name="h2">18sp</dimen>
+    <dimen name="h1">18dp</dimen>
 </resources>
