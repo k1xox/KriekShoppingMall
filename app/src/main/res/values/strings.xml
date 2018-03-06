@@ -2,4 +2,5 @@
     <string name="app_name">Kriek Shopping Mall</string>
     <string name="Password">Pass</string>
     <string name="register">New Register</string>
+    <string name="message_have_space1">Please fill all blank</string>
 </resources>
