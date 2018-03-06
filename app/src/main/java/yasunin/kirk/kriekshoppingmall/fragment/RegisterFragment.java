@@ -11,16 +11,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 
 import yasunin.kirk.kriekshoppingmall.MainActivity;
 import yasunin.kirk.kriekshoppingmall.R;
+import yasunin.kirk.kriekshoppingmall.utility.MyAlert;
 
 /**
  * Created by User on 6/3/2561.
  */
 
 public class RegisterFragment extends Fragment {
+
+    //Explicit
+    private String nameString, userString , passwordString, modeString;
+    private boolean aBoolean = true;
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -28,12 +35,34 @@ public class RegisterFragment extends Fragment {
         //creat toolbar
         creatToolbar();
 
+        //Radio Controller
+        radioController();
+
+
     }//Main Method
+
+    private void radioController() {
+        RadioGroup radioGroup = getView().findViewById(R.id.ragMode);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                aBoolean = false;
+                switch (i) {
+                    case R.id.radOwnerShop:
+                        modeString = "OwnerShop";
+                        break;
+                    case R.id.radCustomer:
+                        modeString = "Customer";
+                        break;
+                }
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId()== R.id.itemUpload){
+        if (item.getItemId() == R.id.itemUpload) {
             uploadToServer();
             return true;
         }
@@ -43,7 +72,28 @@ public class RegisterFragment extends Fragment {
     private void uploadToServer() {
 
         //get Value From EditText
+        EditText nameEditText = getView().findViewById(R.id.edtName);
+        EditText userEditText = getView().findViewById(R.id.edtUser);
+        EditText passwordEditText = getView().findViewById(R.id.edtPassword);
 
+        nameString = nameEditText.getText().toString().trim();
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+
+        //check Space
+        if (nameString.isEmpty() || userString.isEmpty() || passwordString.isEmpty()){
+            //Have Space
+            MyAlert myAlert = new MyAlert(getActivity());
+            myAlert.myDialog(getString(R.string.title_have_space), getString(R.string.message_have_space1));
+        } else if (aBoolean) {
+           // Non Choose Mode
+            MyAlert myAlert = new MyAlert(getActivity());
+            myAlert.myDialog("Non choose Mode" ,
+                    "Please Choose Mode");
+        } else {
+            //choose Mode OK
+
+        }
 
 
     }//uploadToServer
@@ -51,7 +101,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        inflater.inflate(R.menu.menu_register,menu);
+        inflater.inflate(R.menu.menu_register, menu);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -61,7 +111,7 @@ public class RegisterFragment extends Fragment {
         setHasOptionsMenu(true);
 
         Toolbar toolbar = getView().findViewById(R.id.ToolbarRegister);
-        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.register));
         ((MainActivity) getActivity()).getSupportActionBar().setSubtitle(getString(R.string.message_have_space1));
@@ -83,7 +133,7 @@ public class RegisterFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fraingment_main,container,false);
-        return  view;
+        View view = inflater.inflate(R.layout.fraingment_main, container, false);
+        return view;
     }
 }
