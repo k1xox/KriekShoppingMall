@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 
 import yasunin.kirk.kriekshoppingmall.MainActivity;
@@ -41,9 +42,11 @@ public class RegisterFragment extends Fragment {
 
     private void uploadToServer() {
 
+        //get Value From EditText
 
 
-    }
+
+    }//uploadToServer
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

@@ -37,6 +37,8 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtName"
+                android:inputType="text"
                 android:hint="Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -59,6 +61,7 @@
 
             <!--TextField-->
             <EditText
+                android:id="@+id/edtUser"
                 android:inputType="text"
                 android:hint="User"
                 android:layout_width="match_parent"
@@ -82,7 +85,9 @@
 
             <!--TextField-->
             <EditText
-                android:hint="@string/Password"
+                android:id="@+id/edtPassword"
+                android:inputType="text"
+                android:hint="Pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -98,15 +103,18 @@
             android:layout_height="wrap_content" />
 
         <RadioGroup
+            android:id="@+id/ragMode"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:text="Ower_Shop"
+                android:id="@+id/radOwnerShop"
+                android:text="Owner_Shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <RadioButton
+                android:id="@+id/radCustomer"
                 android:text="Customer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
