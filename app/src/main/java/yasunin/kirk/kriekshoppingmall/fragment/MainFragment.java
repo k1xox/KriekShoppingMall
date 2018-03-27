@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 
 import yasunin.kirk.kriekshoppingmall.R;
+import yasunin.kirk.kriekshoppingmall.utility.MyAlert;
 
 /**
  * Created by User on 6/3/2561.
@@ -41,6 +42,17 @@ public class MainFragment  extends Fragment{
                 String userString = userEditText.getText().toString().trim();
                 String passwordString = passwordEditText.getText().toString().trim();
 
+                if (userString.isEmpty() || passwordString.isEmpty()) {
+//                    Have Space
+                    MyAlert myAlert = new MyAlert(getActivity());
+                    myAlert.myDialog(getString(R.string.title_have_space),
+                            getString(R.string.message_have_space1));
+                }else {
+//                    No Space
+
+
+
+                }//if
 
             }
         });
