@@ -15,6 +15,7 @@
 
         <!--USer-->
         <LinearLayout
+            android:id="@+id/btnUser"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -37,7 +38,7 @@
         <!--Password-->
 
         <LinearLayout
-
+            android:id="@+id/btnPassword"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -60,6 +61,7 @@
 
         <!--Loin Button-->
         <Button
+            android:id="@+id/btnLogin"
             android:text="Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
