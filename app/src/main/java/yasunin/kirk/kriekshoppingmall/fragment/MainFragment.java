@@ -1,5 +1,6 @@
 package yasunin.kirk.kriekshoppingmall.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import yasunin.kirk.kriekshoppingmall.R;
+import yasunin.kirk.kriekshoppingmall.ServiceActivity;
 import yasunin.kirk.kriekshoppingmall.utility.GetAllDataByURL;
 import yasunin.kirk.kriekshoppingmall.utility.MyAlert;
 import yasunin.kirk.kriekshoppingmall.utility.MyConstant;
@@ -38,7 +40,7 @@ public class MainFragment  extends Fragment{
     }//Main Method
 
     private void loginController(){
-        Button button = getView().findViewById(R.id.etnLogin);
+        Button button = getView().findViewById(R.id.btnLogin);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +73,7 @@ public class MainFragment  extends Fragment{
                     String[] columnStrings = myConstant.getColumnUser();
                     String[] loginStrings = new String[columnStrings.length];
 
-                    for (int i=0; i<jsonArray.length();)i+=1){
+                    for (int i=0; i<jsonArray.length();i+=1){
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         if (userString.equals(jsonObject.getString(columnStrings[2]))) {
@@ -96,7 +98,14 @@ public class MainFragment  extends Fragment{
 //                        Password True
                         Toast.makeText(getActivity(),"Welcome" + loginStrings[1],
                                 Toast.LENGTH_SHORT).show();
+//                        Move to ServiceActivity
+                        Intent intent = new Intent(getActivity(), ServiceActivity.class);
+                        intent.putExtra("Login", loginStrings);
+                        startActivity(intent);
+                        getActivity().finish();
+
                     }else {
+//                        Password False
                         MyAlert myAlert = new MyAlert(getActivity());
                         myAlert.myDialog("Password False",
                                 "Please Try Again Password False");
